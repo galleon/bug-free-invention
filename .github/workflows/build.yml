@@ -7,16 +7,32 @@ jobs:
   build-unix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: knock knock
+        run: |
+          ls -lRt
+      - uses: actions/checkout@v2
         with:
           repository: MiniZinc/libminizinc
+      - name: Compilation libminizinc
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
+      - name: What is there
+        run: |
+          ls -lRt
       - uses: actions/checkout@v2
         with:
           repository: Gecode/gecode
+      - name: Building gecode
+        run: |
+          configure
+          make
       - uses: actions/checkout@v2
         with:
           repository: chuffed/chuffed
-      - name: Configure CMake
+      - name: CMake chuffed
         run: |
           mkdir build
           cd build
