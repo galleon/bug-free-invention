@@ -9,13 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@master
         with:
-          name: MiniZinc/libminizinc
+          repository: MiniZinc/libminizinc
       - uses: actions/checkout@v2
         with:
-          name: Gecode/gecode
+          repository: Gecode/gecode
       - uses: actions/checkout@v2
         with:
-          name: chuffed/chuffed
+          repository: chuffed/chuffed
       - name: Configure CMake
         run: |
           mkdir build
