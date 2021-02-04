@@ -9,18 +9,21 @@ jobs:
     steps:
       - name: knock knock
         run: |
+          pwd
           ls -lRt
       - uses: actions/checkout@v2
         with:
           repository: MiniZinc/libminizinc
       - name: Compilation libminizinc
         run: |
+          pwd
           mkdir build
           cd build
           cmake ..
           cmake --build .
       - name: What is there
         run: |
+          pwd
           ls -lRt
       - uses: actions/checkout@v2
         with:
@@ -32,12 +35,12 @@ jobs:
           repository: chuffed/chuffed
       - name: CMake chuffed
         run: |
+          pwd
           mkdir build
           cd build
           cmake ..
           cmake --build .
       - name: winding up
         run: |
-          ls -lRt
-          ls -lRt /build
-          ls -l ~/
+          pwd
+          ls -l
