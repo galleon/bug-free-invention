@@ -36,3 +36,8 @@ jobs:
           cd build
           cmake ..
           cmake --build .
+      - name: winding up
+        run: |
+          ls -lRt
+          ls -lRt /build
+          ls -l ~/
