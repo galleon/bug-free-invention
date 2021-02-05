@@ -15,15 +15,13 @@ jobs:
         with:
           repository: Gecode/gecode
       - name: configure
-        run: mkdir build && cd build && cmake -DCMAKE_CXX_FLAGS="-Werror" ..
+        run: mkdir build && cd build && cmake ..
       - name: build
         run: |
             cmake --build build
             ldd bin/fzn-gecode
-            ls -lrt bin/
-            ls -lrt lib/
-      - name: test
-        run: cd build && ctest
+            ls -lrt build/bin/
+            ls -lrt build/lib/
 
   build-windows:
     runs-on: ${{ matrix.os }}
@@ -39,5 +37,3 @@ jobs:
         run: mkdir build && cd build && cmake ..
       - name: build
         run: cmake --build build --config Debug
-      - name: test
-        run: cd build && ctest
