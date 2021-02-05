@@ -6,7 +6,7 @@
 !.vuepress/
 
 # Github
-.github/
+#.github/
 
 # Python
 __pycache__/
