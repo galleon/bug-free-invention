@@ -18,8 +18,7 @@ jobs:
       - name: build
         run: |
           cmake --build build
-          ls -l build/bin/
-          ls -l build/
+          ls -lRt build/
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
@@ -33,10 +32,9 @@ jobs:
       - name: build
         run: |
           cmake --build build
-          ls -l build/Debug/
-          ls -l build/Win32/
+          ls -lRt build/
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
           name: chuffed-${{ matrix.os }}
-          path: build/bin/**/fzn-chuffed
+          path: build/**/fzn-chuffed*
