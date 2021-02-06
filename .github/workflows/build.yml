@@ -25,11 +25,11 @@ jobs:
             ldd bin/fzn-gecode
             ls -lrt build/bin/
             ls -lrt build/lib/
-      - uses: actions/upload-artifact@v2
+      - name: Upload
+        uses: actions/upload-artifact@v2
         with:
-          name: gecode-linux.tar.gz
-          path: build/bin
-          path: build/lib
+          path: ./gecode-linux.tar.gz
+          name: build/bin/**
 
   build-windows:
     runs-on: ${{ matrix.os }}
@@ -44,11 +44,11 @@ jobs:
         run: mkdir build && cd build && cmake ..
       - name: build
         run: cmake --build build --config Debug
-      - uses: actions/upload-artifact@v2
+      - name: Upload
+        uses: actions/upload-artifact@v2
         with:
-          name: gecode-windows.zip
-          path: build/bin
-          path: build/lib
+          path: ./gecode-windows.zip
+          name: build/bin/**
 
   build-macosx:
     runs-on: ${{ matrix.os }}
@@ -63,7 +63,8 @@ jobs:
         run: mkdir build && cd build && cmake ..
       - name: build
         run: cmake --build build
-      - uses: actions/upload-artifact@v2
+      - name: Upload
+        uses: actions/upload-artifact@v2
         with:
-          name: gecode-macos.tar.gz
-          path: build/
+          path: ./gecode-macosx.tgz
+          name: build/bin/**
