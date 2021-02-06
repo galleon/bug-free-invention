@@ -33,7 +33,6 @@ jobs:
       - name: build
         run: |
           cmake --build build
-          ls -l build/*.dir/
           ls -l build/Debug/
           ls -l build/Win32/
       - name: Upload
