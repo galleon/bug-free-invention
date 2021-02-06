@@ -4,56 +4,11 @@ on:
   push:
 
 jobs:
-  build-unix:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
-    steps:
-      - name: knock knock
-        run: |
-          pwd
-          ls -lRt
-      - uses: actions/checkout@v2
-        with:
-          repository: Gecode/gecode
-      - name: configure
-        run: mkdir build && cd build && cmake ..
-      - name: build
-        run: |
-            cmake --build build
-            ldd build/bin/fzn-gecode
-            ls -lrt build/bin/
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: gecode-linux
-          path: build/bin/**
-
-  build-windows:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest, windows-2016]
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: Gecode/gecode
-      - name: configure
-        run: mkdir build && cd build && cmake ..
-      - name: build
-        run: cmake --build build --config Debug
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: gecode-windows
-          path: build/bin/**
-
-  build-macosx:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-10.15]
+        os: [ubuntu-latest, windows-latest, windows-2016, macos-10.15]
     steps:
       - uses: actions/checkout@v2
         with:
@@ -65,5 +20,18 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: gecode-macos
+          name: gecode-windows
           path: build/bin/**
+      - uses: actions/checkout@v2
+        with:
+          repository: chuffed/chuffed
+      - name: configure
+        run: mkdir build && cd build && cmake ..
+      - name: build
+        run: cmake --build build
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: chuffed-windows
+          path: build/bin/**
+
