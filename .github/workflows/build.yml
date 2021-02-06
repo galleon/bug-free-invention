@@ -27,8 +27,8 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          path: ./gecode-linux.tar.gz
-          name: build/bin/**
+          name: ./gecode-linux.tar.gz
+          path: build/bin/**
 
   build-windows:
     runs-on: ${{ matrix.os }}
@@ -46,8 +46,8 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          path: ./gecode-windows.zip
-          name: build/bin/**
+          name: ./gecode-windows.zip
+          path: build/bin/**
 
   build-macosx:
     runs-on: ${{ matrix.os }}
@@ -65,5 +65,5 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          path: ./gecode-macosx.tgz
-          name: build/bin/**
+          name: ./gecode-macosx.tgz
+          path: build/bin/**
