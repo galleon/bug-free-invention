@@ -22,7 +22,7 @@ jobs:
       - name: build
         run: |
             cmake --build build
-            ldd bin/fzn-gecode
+            ldd build/bin/fzn-gecode
             ls -lrt build/bin/
             ls -lrt build/lib/
       - name: Upload
