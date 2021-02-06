@@ -27,7 +27,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: gecode-linux.tar.gz
+          name: gecode-linux
           path: build/bin/**
 
   build-windows:
@@ -46,7 +46,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: gecode-windows.zip
+          name: gecode-windows
           path: build/bin/**
 
   build-macosx:
@@ -65,5 +65,5 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: gecode-macosx.tgz
+          name: gecode-macos
           path: build/bin/**
