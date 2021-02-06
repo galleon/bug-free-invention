@@ -20,7 +20,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: gecode-windows
+          name: gecode-${{ matrix.os }}
           path: build/bin/**
       - uses: actions/checkout@v2
         with:
@@ -28,10 +28,12 @@ jobs:
       - name: configure
         run: mkdir build && cd build && cmake ..
       - name: build
-        run: cmake --build build
+        run: |
+          cmake --build build
+          ls -l build/
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: chuffed-windows
+          name: chuffed-${{ matrix..os }}
           path: build/bin/**
 
