@@ -5,7 +5,10 @@ on:
 
 jobs:
   build-unix:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
     steps:
       - name: knock knock
         run: |
@@ -33,7 +36,6 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, windows-2016]
-    
     steps:
       - uses: actions/checkout@v2
         with:
@@ -53,7 +55,6 @@ jobs:
     strategy:
       matrix:
         os: [macos-10.15]
-
     steps:
       - uses: actions/checkout@v2
         with:
