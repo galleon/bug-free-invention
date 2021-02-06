@@ -24,7 +24,6 @@ jobs:
             cmake --build build
             ldd build/bin/fzn-gecode
             ls -lrt build/bin/
-            ls -lrt build/lib/
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
