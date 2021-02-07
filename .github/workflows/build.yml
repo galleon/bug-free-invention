@@ -36,5 +36,20 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: chuffed-${{ matrix.os }}
+          name: artifact-${{ matrix.os }}
           path: build/**/fzn-chuffed*
+      - uses: actions/checkout@v2
+        with:
+          repository: MiniZinc/libminizinc
+      - name: configure
+        run: mkdir build && cd build && cmake ..
+      - name: build
+        run: |
+          cmake --build build
+          ls -lRt build/
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-${{ matrix.os }}
+          path: build/**
+
