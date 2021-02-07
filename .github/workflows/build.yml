@@ -18,7 +18,6 @@ jobs:
       - name: build
         run: |
           cmake --build build
-          ls -lRt build/
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
@@ -32,7 +31,6 @@ jobs:
       - name: build
         run: |
           cmake --build build
-          ls -lRt build/
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
@@ -46,7 +44,6 @@ jobs:
       - name: build
         run: |
           cmake --build build
-          ls -lRt build/
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
