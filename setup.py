@@ -352,5 +352,5 @@ setup(
     },
     extras_require=extras_require,
     ext_modules=[CMakeExtension(name='skdecide/hub/', sourcedir='cpp')],
-    cmdclass=dict(build_ext=CMakeBuild, install=InstallCommand, bdist_wheel=BDistWheelCommand)
+    cmdclass=dict(build_ext=CMakeBuild, install=InstallCommand)#, bdist_wheel=BDistWheelCommand)
 )
