@@ -35,7 +35,7 @@ def _get_version_hash():
 # if version[:1] == 'v':
 #     version = version[1:]
 
-version = "0.1" + _get_version_hash()
+version = "0.1+" + _get_version_hash()
 
 print("version: {}".format(version))
 
