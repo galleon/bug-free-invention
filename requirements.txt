@@ -6,7 +6,10 @@ numba>=0.50
 numpy>=1.16.4
 matplotlib>=3.1.0
 minizinc>=0.3
+mip==1.9
+ortools>=8.0
 pathos>=0.2.3
+pymzn>=0.18.3
 pynng>=0.5.0
 ray[rllib,debug]>=1.0.0
 simplejson>=3.16.0
