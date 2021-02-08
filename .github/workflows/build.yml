@@ -43,7 +43,7 @@ jobs:
 
       - name: Build macOS/Windows wheel
         if: matrix.os != 'ubuntu-latest'
-        run: python setup.py -q bdist_wheel
+        run: python setup.py -q bdist_wheel --cpp-extension
 
       - name: Build x86 Linux wheels
         if: matrix.wheel == 'x86_64'
