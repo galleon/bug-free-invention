@@ -19,3 +19,6 @@
 [submodule "cpp/sdk/spdlog"]
 	path = cpp/sdk/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "cpp/deps/gecode"]
+	path = cpp/deps/gecode
+	url = https://github.com/Gecode/gecode.git

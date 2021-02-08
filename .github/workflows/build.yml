@@ -7,46 +7,52 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-false: false
       matrix:
-        os: [ubuntu-latest, windows-latest, windows-2016, macos-10.15]
+        os: [windows-2016, macos-10.15]
+        python-version: [3.8]
+        include:
+          - os: ubuntu-latest
+            python-version: 3.8
+            wheel: x86_64
+
     steps:
       - uses: actions/checkout@v2
+      - run: |
+        git fetch --prune --unshallow
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
-          repository: Gecode/gecode
-      - name: configure
-        run: mkdir build && cd build && cmake ..
-      - name: build
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up Docker Buildx
+        if: matrix.os == 'ubuntu-latest'
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Install dependencies
         run: |
-          cmake --build build
-      - name: Upload
+          python -m pip install --upgrade -q pip pytest wheel setuptools twine
+
+      - name: Test with pytest
+        if: matrix.os != 'ubuntu-latest'
+        run: |
+          pip install .
+          pytest
+
+      - name: Build macOS/Windows wheel
+        if: matrix.os != 'ubuntu-latest'
+        run: python setup.py -q bdist_wheel
+
+      - name: Build x86 Linux wheels
+        if: matrix.wheel == 'x86_64'
+        run: |
+          docker run -e PLAT=manylinux2014_x86_64 -v `pwd`:/io quay.io/pypa/manylinux2014_x86_64 /io/scripts/build-manylinux-wheels.sh
+
+      - name: Upload as build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-${{ matrix.os }}
-          path: build/bin/**
-      - uses: actions/checkout@v2
-        with:
-          repository: chuffed/chuffed
-      - name: configure
-        run: mkdir build && cd build && cmake ..
-      - name: build
-        run: |
-          cmake --build build
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: artifact-${{ matrix.os }}
-          path: build/**/fzn-chuffed*
-      - uses: actions/checkout@v2
-        with:
-          repository: MiniZinc/libminizinc
-      - name: configure
-        run: mkdir build && cd build && cmake ..
-      - name: build
-        run: |
-          cmake --build build
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: artifact-${{ matrix.os }}
-          path: build/**/minizinc
+          name: wheels
+          path: dist/*.whl
 
