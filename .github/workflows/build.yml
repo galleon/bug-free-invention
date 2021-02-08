@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-false: false
+      fail-fast: false
       matrix:
         os: [windows-2016, macos-10.15]
         python-version: [3.8]
