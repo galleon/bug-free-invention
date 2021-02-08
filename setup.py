@@ -44,7 +44,7 @@ cxx_compiler = None
 cmake_options = None
 
 class BDistWheelCommand(bdist_wheel):
-    user_options = install.user_options + [
+    user_options = bdist_wheel.user_options + [
         ('cpp-extension', None, 'Compile the C++ hub extension'),
         ('cxx-compiler=', None, 'Path to the C++ compiler'),
         ('cmake-options=', None, 'Options to pass to cmake')
@@ -352,5 +352,5 @@ setup(
     },
     extras_require=extras_require,
     ext_modules=[CMakeExtension(name='skdecide/hub/', sourcedir='cpp')],
-    cmdclass=dict(build_ext=CMakeBuild, install=InstallCommand)#, bdist_wheel=BDistWheelCommand)
+    cmdclass=dict(build_ext=CMakeBuild, install=InstallCommand, bdist_wheel=BDistWheelCommand)
 )
