@@ -28,9 +28,9 @@ find /io/temp-wheels/ -type f -delete
 for PYBIN in /opt/python/cp3[789]*/bin; do
     "${PYBIN}/pip" install -q -U setuptools wheel pytest --cache-dir /io/pip-cache
     (cd /io/ && "${PYBIN}/python" -m pip install .)
-    (cd /io && ls -lRt)
-    (cd /io/ && "${PYBIN}/python" -m pytest)
-    (cd /io/ && "${PYBIN}/python" setup.py -q bdist_wheel -d /io/temp-wheels --cpp-extension)
+    (find /tmp -name 'scikit-decide-0.1*.whl' -print)
+    #(cd /io/ && "${PYBIN}/python" -m pytest)
+    (cd /io/ && "${PYBIN}/python" setup.py -q bdist_wheel -d /io/temp-wheels) # --cpp-extension)
 done
 
 "$PYBIN/pip" install -q auditwheel
