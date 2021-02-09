@@ -48,7 +48,10 @@ jobs:
       - name: Build x86 Linux wheels
         if: matrix.wheel == 'x86_64'
         run: |
-          docker run -e PLAT=manylinux2014_x86_64 -v `pwd`:/io quay.io/pypa/manylinux2014_x86_64 /io/scripts/build-manylinux-wheels.sh
+          #docker run -e PLAT=manylinux2014_x86_64 -v `pwd`:/io quay.io/pypa/manylinux2014_x86_64 /io/scripts/build-manylinux-wheels.sh
+          docker build -t skdecide_x86_64 --output tmpwheelhouse -f scripts/Dockerfile_x86_64 .
+          mkdir -p dist
+          mv tmpwheelhouse/wheelhouse/*.whl dist/
 
       - name: Upload as build artifacts
         uses: actions/upload-artifact@v2
