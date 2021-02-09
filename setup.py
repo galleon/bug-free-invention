@@ -39,7 +39,7 @@ version = "0.1+" + _get_version_hash()
 
 print("version: {}".format(version))
 
-cpp_extension = False
+cpp_extension = True
 cxx_compiler = None
 cmake_options = None
 
