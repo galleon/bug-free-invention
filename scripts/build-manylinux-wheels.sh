@@ -25,7 +25,7 @@ mkdir -p /io/temp-wheels
 # Clean out any old existing wheels.
 find /io/temp-wheels/ -type f -delete
 
-for PYBIN in /opt/python/cp3[789]*/bin; do
+for PYBIN in /opt/python/cp3[78]*/bin; do
     "${PYBIN}/pip" install -q -U setuptools wheel pytest --cache-dir /io/pip-cache
     (cd /io/ && "${PYBIN}/python" -m pip install .)
     (find /tmp -name 'scikit-decide-0.1*.whl' -print)
