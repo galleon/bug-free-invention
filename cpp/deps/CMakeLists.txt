@@ -1,1 +1,3 @@
+ADD_SUBDIRECTORY(chuffed)
 ADD_SUBDIRECTORY(gecode)
+ADD_SUBDIRECTORY(libminizinc)
