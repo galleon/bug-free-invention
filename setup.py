@@ -6,6 +6,7 @@ import os
 import re
 import sys
 import platform
+import fileinput
 import subprocess
 
 from setuptools import setup, find_packages, Extension
@@ -137,6 +138,10 @@ class CMakeBuild(build_ext):
 
     def build_extension(self, ext):
         global cxx_compiler, cmake_options
+
+        with fileinput.FileInput(os.path.abspath('cpp/deps/gecode/CMakeLists.txt'), inplace=True) as file:
+            for line in file:
+                print(line.replace('CMAKE_RUNTIME_OUTPUT_DIRECTORY', '_CMAKE_RUNTIME_OUTPUT_DIRECTORY_'), end='')
 
         extdir = os.path.abspath(os.path.dirname(self.get_ext_fullpath(ext.name)))
         cmake_args = ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + extdir,
