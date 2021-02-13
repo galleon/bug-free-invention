@@ -110,7 +110,7 @@ try:
     from skdecide.hub.__skdecide_hub_cpp import _PDDL_Event_ as Event
     from skdecide.hub.__skdecide_hub_cpp import _PDDL_Process_ as Process
 except ImportError:
-    sys.path = record_sys_path
+    # sys.path = record_sys_path
     print(
         'Scikit-decide C++ hub library not found. Please check it is installed in "skdecide/hub".'
     )
