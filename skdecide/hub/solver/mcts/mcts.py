@@ -31,8 +31,8 @@ from skdecide.builders.solver import ParallelSolver, DeterministicPolicies, Util
 
 try:
 
-    from skdecide.hub.__skdecide_hub_cpp import _MCTSSolver_ as mcts_solver
-    from skdecide.hub.__skdecide_hub_cpp import _MCTSOptions_ as mcts_options
+    from __skdecide_hub_cpp import _MCTSSolver_ as mcts_solver
+    from __skdecide_hub_cpp import _MCTSOptions_ as mcts_options
 
     class D(
         Domain,

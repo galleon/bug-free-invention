@@ -30,7 +30,7 @@ from skdecide.builders.solver import ParallelSolver, DeterministicPolicies, Util
 
 try:
 
-    from skdecide.hub.__skdecide_hub_cpp import _LRTDPSolver_ as lrtdp_solver
+    from __skdecide_hub_cpp import _LRTDPSolver_ as lrtdp_solver
 
     # TODO: remove Markovian req?
     class D(

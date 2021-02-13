@@ -31,7 +31,7 @@ from skdecide.builders.solver import ParallelSolver, DeterministicPolicies, Util
 
 try:
 
-    from skdecide.hub.__skdecide_hub_cpp import _ILAOStarSolver_ as ilaostar_solver
+    from __skdecide_hub_cpp import _ILAOStarSolver_ as ilaostar_solver
 
     # TODO: remove Markovian req?
     class D(
