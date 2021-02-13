@@ -13,4 +13,4 @@ for p in sys.path:
         for filename in fnmatch.filter(files, "__skdecide_hub_cpp*"):
             pl.append(dirpath)
 
-sys.payth.extend(pl)
+sys.path.extend(pl)
