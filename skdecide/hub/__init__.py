@@ -8,5 +8,5 @@ import sys
 
 for p in sys.path:
     for dirpath, dirs, files in os.walk(p):
-        if filename in fnmatch.filter(files, "__skdecide_hub_cpp*"):
+        for filename in fnmatch.filter(files, "__skdecide_hub_cpp*"):
             sys.append(dirpath)
