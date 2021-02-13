@@ -6,7 +6,11 @@ import fnmatch
 import os
 import sys
 
+tl = []
+
 for p in sys.path:
     for dirpath, dirs, files in os.walk(p):
         for filename in fnmatch.filter(files, "__skdecide_hub_cpp*"):
-            sys.path.append(dirpath)
+            tl.append(dirpath)
+
+sys.payth.extend(pl)
